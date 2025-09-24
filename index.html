@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escola Educacional São José - Tibiri II, Santa Rita</title>
+    <style>
+        /* Modern CSS reset and typography */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: #2d3748;
+            background-color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Modern hero header with glassmorphism effect */
+        header {
+            background: linear-gradient(135deg, #042aa7 0%, #0a178d 50%, #03346f 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/><circle cx="10" cy="60" r="0.5" fill="white" opacity="0.1"/><circle cx="90" cy="40" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            pointer-events: none;
+        } 
+        .logoinst{
+            width: 150px;
+            height: 150px;
+            top: 30px; 
+            left: 60px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo .subtitle {
+            font-size: clamp(1rem, 3vw, 1.4rem);
+            opacity: 0.95;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+             text-shadow: 0 4px 8px rgb(254, 248, 248); 
+             color: white;
+        }
+
+        .logo .location {
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+            opacity: 0.85;
+            font-weight: 400;
+             text-shadow: 0 4px 8px rgb(255, 252, 252);
+        }
+
+        /* Modern floating navigation */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        nav a {
+            color: #1e40af;
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        nav a:hover::before {
+            left: 100%;
+        }
+
+    
+
+        /* Modern main content with better spacing */
+        main {
+            padding: 5rem 0;
+        }
+
+        section {
+            margin-bottom: 6rem;
+            position: relative;
+        }
+
+        /* Modern card design with subtle animations */
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(59, 130, 246, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #60a5fa, #93c5fd);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(59, 130, 246, 0.15);
+        }
+
+        h2 {
+            color: #1e40af;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #60a5fa);
+            border-radius: 2px;
+        }
+
+        h3 {
+            color: #1e40af;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+
+        /* Modern hero section */
+        .hero-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border: none;
+            text-align: center;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(147, 197, 253, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        /* Modern history section with timeline feel */
+        .historia {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            position: relative;
+        }
+
+        .historia::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 6px;
+            background: linear-gradient(180deg, #3b82f6, #60a5fa);
+            border-radius: 0 3px 3px 0;
+        }
+
+        /* Modern events grid with better cards */
+        .eventos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .evento-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(59, 130, 246, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .evento-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #60a5fa);
+        }
+
+        .evento-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(59, 130, 246, 0.2);
+        }
+
+        .evento-card h3 {
+            color: #1e40af;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .evento-card p {
+            color: #64748b;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* Modern info cards with better visual hierarchy */
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(59, 130, 246, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #60a5fa);
+        }
+
+        .info-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(59, 130, 246, 0.15);
+        }
+
+        .info-card h3 {
+            color: #1e40af;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .info-card .number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #3b82f6, #1e40af);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            margin-bottom: 1rem;
+            line-height: 1;
+        }
+
+        .info-card p {
+            color: #64748b;
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        /* Modern footer */
+        footer {
+            background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 5rem;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            color: white;
+            
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+            color: white;
+        }
+
+        footer p:last-child {
+            opacity: 0.7;
+            font-size: 0.9rem;
+            margin-top: 1rem; 
+            color: white;
+        }
+
+        /* Enhanced responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            header {
+                padding: 3rem 0;
+            }
+
+            nav {
+                padding: 0.75rem 0;
+            }
+
+            nav ul {
+                gap: 0.25rem;
+            }
+
+            nav a {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            main {
+                padding: 3rem 0;
+            }
+
+            section {
+                margin-bottom: 4rem;
+            }
+
+            .card {
+                padding: 2rem;
+                border-radius: 16px;
+            }
+
+            .eventos-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .info-cards {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .evento-card, .info-card {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Smooth animations and scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Focus states for accessibility */
+        nav a:focus,
+        .evento-card:focus,
+        .info-card:focus {
+            outline: 2px solid #3b82f6;
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div> 
+        <img src="logo2.png" class="logoinst"
+      </div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="logo">
+                    <h1>Escola Educacional São José</h1>
+                    <p class="subtitle">EDUCANDO PARA O FUTURO </p>
+                    <p class="location"></p>
+                </div>
+            </div>
+        </div>
+    </header>
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#historia">Nossa História</a></li>
+                <li><a href="#eventos">Eventos</a></li>
+                <li><a href="#informacoes">Informações</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </div>
+    </nav> 
+      
+
+    <main class="container">
+        <section id="inicio" class="card hero-section">
+            <h2>Bem-vindos à Escola Educacional São José</h2>
+            <p>
+                Com quase quatro décadas de dedicação ao ensino, a Escola Educacional São José é uma instituição 
+                consolidada na comunidade de Tibiri II, em Santa Rita. Nossa missão é proporcionar uma educação 
+                de qualidade, formando cidadãos conscientes e preparados para os desafios do futuro.
+            </p>
+            <p>
+                Atendemos alunos do Maternal ao Fundamental II, oferecendo um ambiente acolhedor e propício ao 
+                aprendizado, onde cada criança é valorizada e incentivada a desenvolver seu potencial máximo.
+            </p>
+        </section>
+
+        <section id="historia" class="card historia">
+            <h2>Nossa História</h2>
+            <p>
+                A Escola Educacional São José iniciou suas atividades há quase 40 anos na cidade de Santa Rita, 
+                especificamente no bairro de Tibiri II. Desde então, tem sido um pilar fundamental na educação 
+                da comunidade local, formando gerações de estudantes com valores sólidos e conhecimento de qualidade.
+            </p>
+            <p>
+                Ao longo dessas quase quatro décadas, nossa instituição cresceu e se desenvolveu, sempre mantendo 
+                o compromisso com a excelência educacional. Começamos com poucas turmas e hoje atendemos alunos 
+                desde o Maternal até o Fundamental II, proporcionando uma base educacional sólida para centenas 
+                de famílias da região.
+            </p>
+            <p>
+                Nossa trajetória é marcada pela dedicação de educadores comprometidos, pelo apoio das famílias 
+                e pela confiança da comunidade. Continuamos evoluindo, sempre respeitando nossos valores 
+                tradicionais enquanto incorporamos metodologias modernas de ensino.
+            </p>
+
+            <div class="info-cards">
+                <div class="info-card">
+                    <span class="number">40</span>
+                    <h3>Anos de História</h3>
+                    <p>Quase quatro décadas educando com amor</p>
+                </div>
+                <div class="info-card">
+                    <span class="number">9</span>
+                    <h3>Níveis de Ensino</h3>
+                    <p>Do Maternal ao Fundamental II</p>
+                </div>
+                <div class="info-card">
+                    <span class="number">1000+</span>
+                    <h3>Alunos Formados</h3>
+                    <p>Gerações educadas com excelência</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="eventos" class="card">
+            <h2>Nossos Eventos</h2>
+            <p>
+                Durante o ano letivo, realizamos diversos eventos que enriquecem a experiência educacional 
+                dos nossos alunos e fortalecem os laços com a comunidade escolar.
+            </p>
+
+            <div class="eventos-grid">
+                <div class="evento-card">
+                    <h3>🎪 Festa Junina - São João</h3>
+                    <p>
+                        Nossa tradicional festa junina celebra as tradições nordestinas com muita alegria. 
+                        Quadrilha, comidas típicas, brincadeiras e apresentações dos alunos fazem desta 
+                        uma das datas mais esperadas do ano.
+                    </p>
+                </div>
+
+                <div class="evento-card">
+                    <h3>🎄 Cantata Natalina</h3>
+                    <p>
+                        Um momento mágico onde nossos alunos apresentam canções natalinas, celebrando o 
+                        espírito de união e amor que marca o final do ano letivo. Uma apresentação 
+                        emocionante para toda a família.
+                    </p>
+                </div>
+
+                <div class="evento-card">
+                    <h3>🌸 Festa do Dia das Mães</h3>
+                    <p>
+                        Homenageamos as mães com apresentações especiais, atividades recreativas e 
+                        momentos de carinho. Uma celebração do amor maternal e da importância da 
+                        família na educação.
+                    </p>
+                </div>
+
+                <div class="evento-card">
+                    <h3>👨‍👧‍👦 Festa do Dia dos Pais</h3>
+                    <p>
+                        Celebramos a figura paterna com atividades esportivas, gincanas e apresentações. 
+                        Um dia especial para fortalecer os laços entre pais e filhos no ambiente escolar.
+                    </p>
+                </div>
+
+                <div class="evento-card">
+                    <h3>🎓 Formatura</h3>
+                    <p>
+                        A cerimônia de formatura marca a conclusão de uma importante etapa na vida dos 
+                        nossos alunos. Um momento solene e emocionante que celebra as conquistas e 
+                        prepara para novos desafios.
+                    </p>
+                </div>
+
+                <div class="evento-card">
+                    <h3>👥 Reunião de Pais</h3>
+                    <p>
+                        Encontros regulares para acompanhar o desenvolvimento dos alunos, discutir 
+                        metodologias de ensino e fortalecer a parceria entre escola e família na 
+                        educação das crianças.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="informacoes" class="card">
+            <h2>Informações Gerais</h2>
+            <div class="info-cards">
+                <div class="info-card">
+                    <h3>📍 Localização</h3>
+                    <p>Tibiri II<br>Santa Rita - PB</p>
+                </div>
+                <div class="info-card">
+                    <h3>🎯 Níveis de Ensino</h3>
+                    <p>Maternal<br>Fundamental I<br>Fundamental II</p>
+                </div>
+                <div class="info-card">
+                    <h3>⏰ Funcionamento</h3>
+                    <p>Segunda a Sexta<br>7h às 17h</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contato">
+        <div class="container">
+            <p><strong>Escola Educacional São José</strong></p>
+            <p>R. Manaíra, 115 - Tibiri, Santa Rita - PB, 58302-17</p>
+            <p>Educando com amor há quase 40 anos</p>
+            <p>&copy; 2024 Escola Educacional São José. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
